@@ -22,7 +22,7 @@ public class RadioTest {
     public void setMaxRadioStation() {
         Radio radio = new Radio();
 
-        radio.setMaxNumberAuditionedRadioStation();
+        radio.setCurrentNumberAuditionedRadioStation(9);
 
         int expected = 9;
         int actual = radio.getNumberAuditionedRadioStation();
@@ -35,7 +35,7 @@ public class RadioTest {
     public void setMinRadioStation() {
         Radio radio = new Radio();
 
-        radio.setMinNumberAuditionedRadioStation();
+        radio.setCurrentVolume(0);
 
         int expected = 0;
         int actual = radio.getNumberAuditionedRadioStation();
@@ -48,7 +48,7 @@ public class RadioTest {
     public void notSetRadioStationAboveMax() {
         Radio radio = new Radio();
 
-        radio.setNextRadioStation(10);
+        radio.setNextRadioStation(11);
 
         int expected = 0;
         int actual = radio.getNumberAuditionedRadioStation();
@@ -110,7 +110,7 @@ public class RadioTest {
     public void setMaxVolume() {
         Radio radio = new Radio();
 
-        radio.setMaxVolume();
+        radio.setCurrentVolume(10);
 
         int expected = 10;
         int actual = radio.getCurrentVolume();
@@ -122,7 +122,7 @@ public class RadioTest {
     public void setMinVolume() {
         Radio radio = new Radio();
 
-        radio.setMinVolume();
+        radio.setCurrentVolume(0);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
