@@ -1,5 +1,13 @@
 package ru.netology.radioman;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class Radio {
     private int maxRadioStation = 9;
     private int minRadioStation = 0;
@@ -15,72 +23,54 @@ public class Radio {
         this.maxRadioStation = countRadioStation - 1;
     }
 
-    public Radio() {
-        this.countRadioStation = countRadioStation;
-    }
-
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public int getMaxRadioStation() {
-        return maxRadioStation;
-    }
-
-    public int getMinRadioStation() {
-        return minRadioStation;
-    }
-
-    public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation < minRadioStation) {
+    public void setCurrentRadioStation(int newCurrentRadioStation) {
+        if (newCurrentRadioStation < minRadioStation) {
             return;
         }
-        if (currentRadioStation > maxRadioStation) {
+        if (newCurrentRadioStation > maxRadioStation) {
             return;
         }
-        this.currentRadioStation = currentRadioStation;
+        this.currentRadioStation = newCurrentRadioStation;
     }
 
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < minVolume) {
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (currentVolume > maxVolume) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
-        this.currentVolume = currentVolume;
+        this.currentVolume = newCurrentVolume;
     }
 
-    public void nextRadioStation() {
-        if (currentRadioStation < maxRadioStation) {
-            currentRadioStation++;
-        } else {
-            currentRadioStation = minRadioStation;
+    public void setNextRadioStation() {
+        if (currentRadioStation >= maxRadioStation) {
+            this.currentRadioStation = minRadioStation;
+            return;
         }
+        this.currentRadioStation++;
     }
 
-    public void prevRadioStation() {
-        if (currentRadioStation > minRadioStation) {
-            currentRadioStation--;
-        } else {
-            currentRadioStation = maxRadioStation;
+    public void setPrevRadioStation() {
+        if (currentRadioStation <= minRadioStation) {
+            this.currentRadioStation = maxRadioStation;
+            return;
         }
+        this.currentRadioStation--;
     }
 
-    public void increaseVolume() {
-        if (currentVolume < maxVolume) {
-            currentVolume++;
+    public void setIncreaseVolume() {
+        if (currentVolume >= maxVolume) {
+            return;
         }
+        this.currentVolume++;
     }
 
-    public void reduceVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume--;
+    public void setReduceVolume() {
+        if (currentVolume <= minVolume) {
+            return;
         }
+        this.currentVolume--;
     }
 }
 
